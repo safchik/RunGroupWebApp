@@ -9,8 +9,8 @@ namespace RunGroupWebApp.Models
         public int? Mileage { get; set; }
 
         [ForeignKey("Address")]
-        public int AddressId { get; set; }
-        public Address Address { get; set; }
+        public int? AddressId { get; set; }
+        public Address? Address { get; set; }
 
         public ICollection<Club> Clubs { get; set; }
         public ICollection<Race> Races { get; set; }
