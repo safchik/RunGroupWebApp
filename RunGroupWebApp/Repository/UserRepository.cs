@@ -35,12 +35,14 @@ namespace RunGroupWebApp.Repository
 
         public bool Save()
         {
-            throw new NotImplementedException();
+            var saved = _context.SaveChanges();
+            return saved > 0 ? true : false;
         }
 
         public bool Update(AppUser user)
         {
-            throw new NotImplementedException();
+            _context.Users.Update(user);
+            return Save();
         }
     }
 }
