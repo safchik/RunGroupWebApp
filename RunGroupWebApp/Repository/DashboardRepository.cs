@@ -27,5 +27,10 @@ namespace RunGroupWebApp.Repository
             var userRaces = _context.Races.Where(r => r.AppUser.Id == curUser);
             return userRaces.ToList();
         }
+
+        public async Task<AppUser> GetUserById(string id)
+        {
+            return await _context.Users.FindAsync(id);
+        }
     }
 }
