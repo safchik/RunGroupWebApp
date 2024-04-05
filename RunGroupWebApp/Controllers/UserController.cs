@@ -30,5 +30,18 @@ namespace RunGroupWebApp.Controllers
             }
             return View(result);
         }
+
+        public async Task<IActionResult> Detail(string id)
+        {
+            var user = await _userRepository.GetUserById(id);
+            var userDetailViewModel = new UserDetailViewModel()
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                Pace = user.Pace,
+                Mileage = user.Mileage,
+            };
+            return View(userDetailViewModel);
+        }
     }
 }
