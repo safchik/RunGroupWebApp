@@ -13,6 +13,14 @@ namespace RunGroupWebApp.Controllers
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IPhotoService _photoService;
 
+        public DashboardController(IDashboardRepository dashboardRepository, IHttpContextAccessor httpContextAccessor,
+            IPhotoService photoService)
+        {
+            _dashboardRepository = dashboardRepository;
+            _httpContextAccessor = httpContextAccessor;
+            _photoService = photoService;
+        }
+
         private void MapUserEdit(AppUser user, EditUserDashboardViewModel editVM, ImageUploadResult photoResult)
         {
             user.Id = editVM.Id;
@@ -23,13 +31,7 @@ namespace RunGroupWebApp.Controllers
             user.State = editVM.State;
         }
 
-        public DashboardController(IDashboardRepository dashboardRepository, IHttpContextAccessor httpContextAccessor,
-            IPhotoService photoService)
-        {
-            _dashboardRepository = dashboardRepository;
-            _httpContextAccessor = httpContextAccessor;
-            _photoService = photoService;
-        }
+
         public async Task<IActionResult> Index()
         {
             var userRaces = await _dashboardRepository.GetAllUserRaces();

@@ -40,7 +40,7 @@ namespace RunGroupWebApp.Controllers
                 }
                 else
                 {
-                    homeViewModel.Clubs = null
+                    homeViewModel.Clubs = null;
                 }
                 return View(homeViewModel);
             }
